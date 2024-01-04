@@ -4,6 +4,7 @@ import com.example.mongoSpring.Model.Post;
 import com.example.mongoSpring.Repository.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -39,5 +40,14 @@ public class PostService {
 
         ArrayList<Post> result=retrivePostFromDB();
         return result;
+    }
+
+    @Transactional
+    public void increaseLikes(UUID postId) {
+        Post post = postRepo.findById(postId)
+                .orElseThrow(() -> new RuntimeException("Post not found"));
+
+        post.setLikes(post.getLikes() + 1);
+        postRepo.save(post);
     }
 }

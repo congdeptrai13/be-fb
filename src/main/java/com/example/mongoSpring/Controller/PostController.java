@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/postService")
 public class PostController {
@@ -32,4 +32,11 @@ public class PostController {
         ArrayList<Post> result=postService.deletePostFromDB(postID);
         return result;
     }
+
+    @PostMapping("/{postId}/like")
+    public String likePost(@PathVariable("postId") UUID postId) {
+        postService.increaseLikes(postId);
+        return "like update success";
+    }
+
 }

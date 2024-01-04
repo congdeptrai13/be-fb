@@ -25,7 +25,7 @@ public class CommentService {
         return commentRepo.save(comment);
     }
 
-    public ArrayList<Comment> getAllComment(UUID postID){
+    public ArrayList<Comment> getAllComment(String postID){
         ArrayList<Comment> result=new ArrayList<Comment>();
         result=commentRepo.findAllByPostID(postID);
         return result;

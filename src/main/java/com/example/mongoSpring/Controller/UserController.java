@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+
+@CrossOrigin
 @RestController
 @RequestMapping("/api/userService")
 public class UserController {
@@ -27,4 +29,10 @@ public class UserController {
     public User getUserDetail(@PathVariable("userID") String userID) {
         return userService.getUserData(userID);
     }
+
+    @PutMapping("/update/{id}")
+    public User updateUserProfile(@PathVariable String id, @RequestBody User updatedUser) {
+        return userService.updateUserProfile(id, updatedUser);
+    }
+
 }

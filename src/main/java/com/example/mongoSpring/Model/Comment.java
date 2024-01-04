@@ -17,7 +17,7 @@ public class Comment {
     @Id
     private UUID commentID;
 
-    private UUID postID;
+    private String postID;
     private String userID;
 
     private String userImage;

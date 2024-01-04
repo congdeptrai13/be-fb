@@ -32,4 +32,17 @@ public class UserService {
     public User getUserData(String userID) {
         return userRepository.findAllByuserID(userID);
     }
+
+    public User updateUserProfile(String id, User updatedUser) {
+        User existingUser = userRepository.findById(id).orElse(null);
+
+        if (existingUser != null) {
+            existingUser.setUserName(updatedUser.getUserName());
+            existingUser.setUserImage(updatedUser.getUserImage());
+            userRepository.save(existingUser);
+            return userRepository.findAllByuserID(id);
+        } else {
+            return null;
+        }
+    }
 }

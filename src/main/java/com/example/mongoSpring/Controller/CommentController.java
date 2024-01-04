@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/commentService")
 public class CommentController {
@@ -20,7 +20,7 @@ public class CommentController {
     }
 
     @GetMapping("/getAllComments/{postID}")
-    public ArrayList<Comment> getAllComments(@PathVariable("postID") UUID postID){
+    public ArrayList<Comment> getAllComments(@PathVariable("postID") String postID){
         return commentService.getAllComment(postID);
     }
 }

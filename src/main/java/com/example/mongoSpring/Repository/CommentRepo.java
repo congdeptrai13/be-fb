@@ -9,5 +9,5 @@ import java.util.UUID;
 public interface CommentRepo extends MongoRepository<Comment, UUID> {
     Comment save(Comment comment);
 
-    ArrayList<Comment> findAllByPostID(UUID postID);
+    ArrayList<Comment> findAllByPostID(String postID);
 }
